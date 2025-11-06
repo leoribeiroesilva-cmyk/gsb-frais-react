@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
+import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
+    const { user, logoutUser } = useAuth();
+
     return (
         <nav className='Navbar'>
             <div className='Navbar-left'>
@@ -10,8 +13,13 @@ function Navbar() {
                 <Link to="/dashboard" >Tableau de bord</Link>
             </div>
             <div className='Navbar-right'>
-                <Link to="">Déconnexion</Link>
-                <Link to="/login">Connexion</Link>
+                {user ? (
+                    <>
+                        <button onClick={logoutUser} style={{ color: 'white', background: 'none', border: 'none',}}>Déconnexion</button>
+                    </>
+                ) : (
+                    <Link to="/login">Connexion</Link>
+                )}
             </div>
         </nav>
     )
