@@ -2,20 +2,20 @@
 // sinon l'envoyer à se connecter
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-
+import FraisTable from '../components/FraisTable'; // Ajoutez cette ligne
 
 function Dashboard(){
     const { user } = useAuth();
-
-    if (!user) {
-        // utilisateur non authentifié, rediriger vers la page de connexion
-        return <Link to="/login">Se connecter</Link>;
-    }
-
+    
     return(
         <div>
             <h1>Tableau de bord</h1>
-            {user && <p>Bienvenue {user.login}!</p>}
+            {user ? (
+                <p>Bienvenue {user.login}!</p>
+            ) : (
+                <Link to="/login">Se connecter</Link>
+            )}
+                <FraisTable /> {/* Le composant est déjà utilisé ici */}
         </div>
     );
 }

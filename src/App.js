@@ -5,6 +5,7 @@ import DashBoard from './pages/Dashboard';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import { AuthProvider } from './context/AuthContext';
+import FraisAdd from './pages/FraisAdd';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<DashBoard />} />
+          <Route path='/frais/ajout' element={<FraisAdd />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
