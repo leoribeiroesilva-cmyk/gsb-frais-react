@@ -20,7 +20,7 @@ export default function Login() {
         // Appel de la fonction login avec email et password
         if (loginUser(login, password)) {
             // redirection vers le tableau de bord en cas de succès
-            navigate('/');
+            navigate('/dashboard');
         } else {
             // afficher un message d'erreur en cas d'échec
             alert('Login ou mot de passe incorrect');
@@ -40,6 +40,7 @@ export default function Login() {
                             value={login}
                             onChange={(e) => setLogin(e.target.value)}
                             required
+                            name='login'
                         />
                     </div>
                     <div>
@@ -49,6 +50,7 @@ export default function Login() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            name='password'
                         />
                     </div>
                     <button type="submit">Se connecter</button>

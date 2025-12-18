@@ -16,7 +16,9 @@ function Navbar() {
             <div className='Navbar-right'>
                 {user ? (
                     <>
-                        <button onClick={logoutUser} style={{ color: 'white', background: 'none', border: 'none',}}>Déconnexion</button>
+                        <button onClick={logoutUser} style={{ color: 'white', background: 'none', border: 'none',}}>
+                            <Link to="/login">Déconnexion</Link>
+                            </button>
                     </>
                 ) : (
                     <Link to="/login">Connexion</Link>

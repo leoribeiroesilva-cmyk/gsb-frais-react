@@ -15,7 +15,9 @@ function Dashboard(){
             ) : (
                 <Link to="/login">Se connecter</Link>
             )}
-                <FraisTable /> {/* Le composant est déjà utilisé ici */}
+            {user && (
+                <FraisTable />
+            )}
         </div>
     );
 }

@@ -3,7 +3,7 @@ import '../styles/FraisTable.css';
 import axios from 'axios';
 import { API_URL } from '../services/authservice';
 import { useAuth } from '../context/AuthContext';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const FraisTable = () => {
   const [fraisList, setFraisList] = useState([]);
@@ -12,6 +12,7 @@ const FraisTable = () => {
   const [filterNonNull, setFilterNonNull] = useState(true); // Ajout de l'état filterNonNull initialisé à true
   const [minMontantValide, setMinMontantValide] = useState(""); // Nouvel état pour le filtre montant
   const { user, token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFrais = async () => {
@@ -50,6 +51,20 @@ const FraisTable = () => {
       minMontantValide === "" ||
       (fraisItem.montantvalide !== null && Number(fraisItem.montantvalide) > Number(minMontantValide))
     );
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Êtes-vous sûr de vouloir supprimer ce frais ?")) return;
+    try {
+      await axios.delete(`${API_URL}frais/suppr`, {
+        data: { id_frais: id },
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      // Met à jour Fraislist en ignorant le frais qui a été supprimé : on ne garde que les frais dont l'id est different de l'id du frais supprimé
+      setFraisList(fraisList.filter((fraisItem) => fraisItem.id_frais !== id));
+    } catch (error) {
+      console.error("Erreur lors de la suppression du frais :", error);
+    }
+  };
 
   if (loading) return <div><b>Chargement des frais...</b></div>;
   return (
@@ -109,10 +124,17 @@ const FraisTable = () => {
               <td>{fraisItem.montantsaisi} €</td>
               <td>{fraisItem.montantvalide} €</td>
               <td>
-                <button onClick={() => Navigate(`/frais/modifier/${fraisItem.id_frais}`)}
+                <button onClick={() => navigate(`/frais/modifier/${fraisItem.id_frais}`)}
                   className="edit-button"
                 >
                   Modifier
+                </button>
+              </td>
+              <td>
+                <button onClick={() => handleDelete(fraisItem.id_frais)}
+                  className="delete-button"
+                >
+                  Supprimer
                 </button>
               </td>
             </tr>

@@ -6,6 +6,10 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import { AuthProvider } from './context/AuthContext';
 import FraisAdd from './pages/FraisAdd';
+import FraisEdit from './pages/FraisEdit';
+import FraisHorsForfait from './components/FraisHorsForfait';
+import FraisHorsForfaitAdd from './pages/FraisHorsForfaitAdd';
+import FraisHorsForfaitEdit from './pages/FraisHorsForfaitEdit';
 
 function App() {
   return (
@@ -28,6 +32,10 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<DashBoard />} />
           <Route path='/frais/ajout' element={<FraisAdd />} />
+          <Route path='/frais/modifier/:id' element={<FraisEdit />} />
+          <Route path='/frais/:id/hors-forfait' element={<FraisHorsForfait />} />
+          <Route path="/frais/:id/hors-forfait/ajouter" element={<FraisHorsForfaitAdd />} />
+          <Route path="/frais/:id/hors-forfait/modifier/:idHF" element={<FraisHorsForfaitEdit />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
