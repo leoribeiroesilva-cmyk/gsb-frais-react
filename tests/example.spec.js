@@ -30,6 +30,8 @@ test ('Connexion', async ({ page }) => {
 
     // Vérifier la redirection vers le tableau de bord
     await expect (page).toHaveURL('http://localhost:3000/dashboard');
+    // vérifier que le nom de l'utilisateur est affiché sur le tableau de bord
+    await expect (page.getByRole('heading', { name: 'Bienvenue, Andre!' })).toBeVisible();
 });
 
 test ('identifiant incorrect', async ({ page }) => {

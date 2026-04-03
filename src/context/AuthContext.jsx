@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+
 import { signIn } from "../services/authservice";
 
 const AuthContext = createContext();
@@ -13,7 +14,7 @@ export function AuthProvider({ children }) {
     const loginUser = async (login, password) => {
         const data = await signIn(login, password);
         setUser(data.visiteur); // Met à jour l'état user avec les données de l'utilisateur connecté
-        setToken(data.access_token); // Stocke le token si nécessaire
+        setToken(data.token); // Stocke le token si nécessaire
         return data;
     }
 

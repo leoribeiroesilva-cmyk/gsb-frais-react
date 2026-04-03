@@ -18,7 +18,7 @@ const FraisTable = () => {
     const fetchFrais = async () => {
       try {
         const response = await
-          axios.get(`${API_URL}frais/liste/${user.id_visiteur}`, {
+          axios.get(`${API_URL}frais/liste/${user.idvisiteur}`, {
             headers: {
               Authorization: `Bearer ${token}`
             },

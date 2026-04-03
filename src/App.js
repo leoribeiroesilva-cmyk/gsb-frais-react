@@ -10,6 +10,8 @@ import FraisEdit from './pages/FraisEdit';
 import FraisHorsForfait from './components/FraisHorsForfait';
 import FraisHorsForfaitAdd from './pages/FraisHorsForfaitAdd';
 import FraisHorsForfaitEdit from './pages/FraisHorsForfaitEdit';
+import Praticien from './pages/Praticien';
+import PraticienEdit from './pages/PraticienEdit';
 
 function App() {
   return (
@@ -36,6 +38,9 @@ function App() {
           <Route path='/frais/:id/hors-forfait' element={<FraisHorsForfait />} />
           <Route path="/frais/:id/hors-forfait/ajouter" element={<FraisHorsForfaitAdd />} />
           <Route path="/frais/:id/hors-forfait/modifier/:idHF" element={<FraisHorsForfaitEdit />} />
+          <Route path='/praticien' element={<Praticien />} />
+          <Route path='/praticien/modifier/:id' element={<PraticienEdit />} />
+
         </Routes>
       </BrowserRouter>
     </AuthProvider>
