@@ -1,36 +1,25 @@
-// cette table affiche les spécialités d'un praticien
+// prend deux props : id du praticien et la liste des spécialités
+// Ce composant n'implémente pas d comportement car tout est géré dans le composant parent Praticien.jsx
+// il gère uniquement l'affichage
 import React from "react";
 import { Link } from "react-router-dom";
-import '../styles/PraticienTable.css'
+import '../styles/FraisTable.css'
 
-export default function SpecialiteTable({ specialites }) {
-    return (
-        <div className="SpecialiteTable">
-            <h2>Spécialités</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Spécialité</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {specialites.map((s, index) => (
-                        <tr key={index}>
-                            <td>{s.specialite}</td>
-                            <td>
-                                <Link to={`/praticiens/${idPraticien}/specialites/modifier/${s.id_specialite}`}>
-                                    Modifier
-                                </Link>
-                            </td>
-                            <td>
-                                <button onClick={() => onDelete(s.id_specialite)}>
-                                    Supprimer
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+export default function SpecialisteTable({ specialites, idPraticien }) {
+  return (
+    <table className="frais-table">
+        <thead>
+            <tr>
+                <th>Libellé de la spécialité</th>
+                </tr>
+        </thead>
+        <tbody>
+            {specialites.map((s) => (
+                <tr key={s.id_specialite}>
+                    <td>{s.lib_specialite}</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+  );
 }

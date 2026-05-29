@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../services/authservice";
@@ -132,6 +132,10 @@ const PraticienForm = ({ initialData, id }) => {
                     step="0.01"
                 />
              </div>
+             <Link className='frais-hors-forfait-link' to={`/specialite/liste/${id}`}>
+                Gérer les spécialités
+            </Link>
+
             <button type="submit" disabled={loading}>
                 {loading ? "En cours..." : initialData ? "Mettre à jour" : "Ajouter"}
             </button>
