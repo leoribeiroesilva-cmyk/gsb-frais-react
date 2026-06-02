@@ -11,8 +11,7 @@ import FraisHorsForfait from './pages/FraisHorsForfait';
 import FraisHorsForfaitAdd from './pages/FraisHorsForfaitAdd';
 import FraisHorsForfaitEdit from './pages/FraisHorsForfaitEdit';
 import Praticien from './pages/Praticien';
-import PraticienEdit from './pages/PraticienEdit';
-import Specialiste from './pages/Specialiste';
+import Specialite from './pages/Specialite';
 
 function App() {
   return (
@@ -40,7 +39,7 @@ function App() {
           <Route path="/frais/:id/hors-forfait/ajouter" element={<FraisHorsForfaitAdd />} />
           <Route path="/frais/:id/hors-forfait/modifier/:idHF" element={<FraisHorsForfaitEdit />} />
           <Route path='/praticien' element={<Praticien />} />
-          <Route path='/praticien/modifier/:id' element={<PraticienEdit />} />
+          <Route path='/specialite/:id' element={<Specialite />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

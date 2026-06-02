@@ -54,7 +54,6 @@ const PraticienTable = () => {
                         <th>Ville</th>
                         <th>Coefficient de notoriété</th>
                         <th>Spécialité</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,11 +65,10 @@ const PraticienTable = () => {
                             <td>{praticienItem.cp_praticien}</td>
                             <td>{praticienItem.ville_praticien}</td>
                             <td>{praticienItem.coef_notoriete}</td>
-                            <td>{praticienItem.lib_specialite}</td>
                             <td>
-                                <button onClick={() => navigate(`/praticien/modifier/${praticienItem.id_praticien}`)}
+                                <button onClick={() => navigate(`/specialite/${praticienItem.id_praticien}`)}
                                     className="edit-button">
-                                    Modifier
+                                    voir le ou les spécialités
                                 </button>
                             </td>
                             <td>

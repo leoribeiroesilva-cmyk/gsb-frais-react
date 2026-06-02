@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // export const API_URL = "http://gsb.julliand.etu.lmdsio.com/api/";
-export const API_URL = "http://127.0.0.1:8000/api/";
+export const API_URL = "http://gsb.ribeiroesilva.etu.lmdsio.com/api/";
 
 export const signIn = async (login, password) => {
     const response = await axios.post(`${API_URL}visiteur/auth`, { login: login, pwd: password });

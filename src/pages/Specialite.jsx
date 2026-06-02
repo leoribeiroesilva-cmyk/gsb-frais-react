@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import SpecialisteTable from "../components/SpecialiteTable";
 import '../styles/FraisHorsForfait.css';
 
-function Specialiste() {
+function Specialite() {
     const { id } = useParams();
     const { token } = useAuth();
     const [specialiteList, setSpecialiteList] = useState([]);
@@ -39,7 +39,7 @@ function Specialiste() {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <SpecialisteTable specialite={specialiteList} praticienId={id} onUpdate={fetchSpecialiteList} />
+                <SpecialisteTable specialites={specialiteList} praticienId={id} onUpdate={fetchSpecialiteList} />
             )}
             <Link className='frais-hors-forfait-link' to={`/praticien/${id}/specialite/ajouter`}>
                 Ajouter une spécialité
@@ -48,4 +48,4 @@ function Specialiste() {
     );
 }
 
-export default Specialiste;
+export default Specialite;

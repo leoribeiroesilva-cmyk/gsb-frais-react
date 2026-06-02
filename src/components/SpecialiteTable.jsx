@@ -5,11 +5,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/FraisTable.css'
 
-export default function SpecialisteTable({ specialites, idPraticien }) {
+export default function SpecialisteTable({ specialites, praticienId }) {
   return (
     <table className="frais-table">
         <thead>
             <tr>
+                <th>Spécialité</th>
                 <th>Libellé de la spécialité</th>
                 </tr>
         </thead>
@@ -17,9 +18,23 @@ export default function SpecialisteTable({ specialites, idPraticien }) {
             {specialites.map((s) => (
                 <tr key={s.id_specialite}>
                     <td>{s.lib_specialite}</td>
+                    <td>
+                        <Link to={`/specialite/${praticienId}/modifier/${s.id_specialite}`}>
+                            Modifier
+                        </Link>
+                    </td>
                 </tr>
             ))}
         </tbody>
+        <tfoot>
+            <tr>
+                <td colSpan="2">
+                    <Link to={`/specialite/${praticienId}/ajouter`}>
+                        Ajouter une spécialité
+                    </Link>
+                </td>
+            </tr>
+        </tfoot>
     </table>
   );
 }
